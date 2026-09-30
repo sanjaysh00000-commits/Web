@@ -1,0 +1,628 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanti Deep Restaurant | Authentic North Indian Food in Alipur Gijhauri</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: '#D97706',
+                        terracotta: '#7C2D12',
+                        ivory: '#FFFBEB',
+                        slate: '#1E293B',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Custom Styles -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .menu-item {
+            display: none;
+        }
+        .menu-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-inter bg-ivory text-slate">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-ivory/95 backdrop-blur-sm shadow-md">
+        <div class="container mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+            <a href="#" class="font-playfair text-2xl md:text-3xl font-bold text-terracotta">Shanti Deep</a>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex gap-8">
+                <a href="#home" class="font-medium hover:text-terracotta transition">Home</a>
+                <a href="#menu" class="font-medium hover:text-terracotta transition">Menu</a>
+                <a href="#reservation" class="font-medium hover:text-terracotta transition">Reservations</a>
+                <a href="#about" class="font-medium hover:text-terracotta transition">About</a>
+                <a href="#reviews" class="font-medium hover:text-terracotta transition">Reviews</a>
+                <a href="#contact" class="font-medium hover:text-terracotta transition">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-terracotta">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-ivory shadow-lg py-4 px-6">
+            <a href="#home" class="block py-2 font-medium hover:text-terracotta transition">Home</a>
+            <a href="#menu" class="block py-2 font-medium hover:text-terracotta transition">Menu</a>
+            <a href="#reservation" class="block py-2 font-medium hover:text-terracotta transition">Reservations</a>
+            <a href="#about" class="block py-2 font-medium hover:text-terracotta transition">About</a>
+            <a href="#reviews" class="block py-2 font-medium hover:text-terracotta transition">Reviews</a>
+            <a href="#contact" class="block py-2 font-medium hover:text-terracotta transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[600px] md:min-h-[800px] bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1585937421612-70a008356f36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')]">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate/80 to-slate/60"></div>
+        <div class="relative z-10 container mx-auto px-6 md:px-12 flex flex-col justify-center items-center text-center h-full">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-ivory mb-6 leading-tight max-w-4xl">
+                Authentic North Indian Flavors in Alipur Gijhauri
+            </h1>
+            <div class="flex items-center gap-2 bg-saffron text-ivory px-5 py-2.5 rounded-full mb-10 text-lg font-medium shadow-lg">
+                <i class="fa-solid fa-star"></i>
+                <span>4.8 (90+ Reviews)</span>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4">
+                <a href="#reservation" class="bg-gradient-to-r from-terracotta to-saffron text-ivory px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition shadow-lg transform hover:-translate-y-1">
+                    Reserve a Table
+                </a>
+                <a href="#menu" class="border-2 border-ivory text-ivory px-8 py-4 rounded-lg font-semibold text-lg hover:bg-ivory hover:text-terracotta transition shadow-lg transform hover:-translate-y-1">
+                    Order Delivery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Strip -->
+    <section class="py-12 bg-saffron/10">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
+                    <i class="fa-solid fa-utensils text-4xl text-terracotta mb-4"></i>
+                    <h3 class="font-semibold text-lg text-slate">Dine-In & Takeaway</h3>
+                </div>
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-6 text-center hover:shadow-lg transition" style="transition-delay: 100ms;">
+                    <i class="fa-solid fa-users text-4xl text-terracotta mb-4"></i>
+                    <h3 class="font-semibold text-lg text-slate">Family & Group Friendly</h3>
+                </div>
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-6 text-center hover:shadow-lg transition" style="transition-delay: 200ms;">
+                    <i class="fa-solid fa-shield-virus text-4xl text-terracotta mb-4"></i>
+                    <h3 class="font-semibold text-lg text-slate">100% Hygienic</h3>
+                </div>
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-6 text-center hover:shadow-lg transition" style="transition-delay: 300ms;">
+                    <i class="fa-solid fa-wheelchair text-4xl text-terracotta mb-4"></i>
+                    <h3 class="font-semibold text-lg text-slate">Wheelchair Accessible</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Digital Menu Preview -->
+    <section id="menu" class="py-16 md:py-24 bg-ivory">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-5xl md:text-6xl font-playfair font-bold text-terracotta text-center mb-12 fade-up">Our Signature Dishes</h2>
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 fade-up">
+                <button class="menu-tab active px-6 py-3 rounded-lg font-semibold text-lg transition bg-terracotta text-ivory" data-category="paneer">Paneer Specialties</button>
+                <button class="menu-tab px-6 py-3 rounded-lg font-semibold text-lg transition bg-ivory border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-ivory" data-category="tandoori">Tandoori Breads</button>
+                <button class="menu-tab px-6 py-3 rounded-lg font-semibold text-lg transition bg-ivory border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-ivory" data-category="small">Small Plates</button>
+                <button class="menu-tab px-6 py-3 rounded-lg font-semibold text-lg transition bg-ivory border-2 border-terracotta text-terracotta hover:bg-terracotta hover:text-ivory" data-category="desserts">Desserts & Tea</button>
+            </div>
+            <!-- Menu Grid -->
+            <div class="menu-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Paneer Items -->
+                <div class="menu-item active" data-category="paneer">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kadhai Paneer" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Kadhai Paneer</h3>
+                            <p class="text-slate/80 mb-4">Cottage cheese cooked in a spiced tomato gravy with bell peppers</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹280</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item active" data-category="paneer">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shahi Paneer" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Shahi Paneer</h3>
+                            <p class="text-slate/80 mb-4">Rich creamy cottage cheese curry with cashews and raisins</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹320</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item active" data-category="paneer">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Matar Paneer" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Matar Paneer</h3>
+                            <p class="text-slate/80 mb-4">Cottage cheese and green peas in a mild spiced gravy</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹260</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tandoori Items -->
+                <div class="menu-item" data-category="tandoori">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tandoori Naan" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Tandoori Naan</h3>
+                            <p class="text-slate/80 mb-4">Leavened bread cooked in traditional clay oven, brushed with butter</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹60</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="tandoori">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Garlic Naan" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Garlic Naan</h3>
+                            <p class="text-slate/80 mb-4">Naan topped with fresh garlic and coriander, cooked in tandoor</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹70</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="tandoori">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tandoori Roti" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Tandoori Roti</h3>
+                            <p class="text-slate/80 mb-4">Whole wheat bread cooked in tandoor, soft and slightly crispy</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹40</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Small Plates -->
+                <div class="menu-item" data-category="small">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Samosa" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Samosa (2 pcs)</h3>
+                            <p class="text-slate/80 mb-4">Crispy pastry filled with spiced potatoes and peas, served with chutney</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹120</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="small">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chaat Papri" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Chaat Papri</h3>
+                            <p class="text-slate/80 mb-4">Crispy papri with potatoes, chickpeas, yogurt and tangy chutneys</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹150</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">Vegan Option</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="small">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Aloo Tikki" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Aloo Tikki (2 pcs)</h3>
+                            <p class="text-slate/80 mb-4">Spiced potato patties, crispy outside, soft inside, served with chutney</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹130</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Desserts & Tea -->
+                <div class="menu-item" data-category="desserts">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Masala Chai" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Masala Chai</h3>
+                            <p class="text-slate/80 mb-4">Traditional spiced Indian tea brewed with milk and aromatic spices</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹50</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">Vegan Option</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="desserts">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gulab Jamun" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Gulab Jamun (2 pcs)</h3>
+                            <p class="text-slate/80 mb-4">Soft milk-solid dumplings soaked in rose and cardamom flavored syrup</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹120</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="desserts">
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition h-full">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kheer" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-playfair font-bold text-slate mb-2">Kheer</h3>
+                            <p class="text-slate/80 mb-4">Traditional rice pudding made with milk, sugar and cardamom, garnished with nuts</p>
+                            <p class="text-2xl font-bold text-terracotta mb-4">₹140</p>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-saffron/20 text-terracotta">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation & Booking Card -->
+    <section id="reservation" class="py-16 md:py-24 bg-saffron/10">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-5xl md:text-6xl font-playfair font-bold text-terracotta text-center mb-12 fade-up">Reserve Your Table</h2>
+            <div class="max-w-2xl mx-auto bg-ivory rounded-2xl shadow-xl p-8 md:p-12 fade-up">
+                <form id="reservation-form">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label for="date" class="block font-semibold text-slate mb-2">Date</label>
+                            <input type="date" id="date" name="date" required class="w-full px-4 py-3 rounded-lg border-2 border-slate/20 focus:border-terracotta focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label for="time" class="block font-semibold text-slate mb-2">Time</label>
+                            <select id="time" name="time" required class="w-full px-4 py-3 rounded-lg border-2 border-slate/20 focus:border-terracotta focus:outline-none transition">
+                                <option value="">Select Time</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="13:30">1:30 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="14:30">2:30 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="18:30">6:30 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="19:30">7:30 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="20:30">8:30 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                                <option value="21:30">9:30 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="22:30">10:30 PM</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="party-size" class="block font-semibold text-slate mb-2">Party Size</label>
+                            <select id="party-size" name="party-size" required class="w-full px-4 py-3 rounded-lg border-2 border-slate/20 focus:border-terracotta focus:outline-none transition">
+                                <option value="">Select Size</option>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6">6 People</option>
+                                <option value="7">7 People</option>
+                                <option value="8">8 People</option>
+                                <option value="9">9 People</option>
+                                <option value="10">10 People</option>
+                                <option value="10+">10+ (Large Group)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-terracotta to-saffron text-ivory px-8 py-4 rounded-lg font-semibold text-lg hover:opacity-90 transition shadow-lg">
+                        Book Now
+                    </button>
+                </form>
+                <div id="booking-success" class="hidden text-center text-green-600 font-semibold text-lg mt-6">
+                    <i class="fa-solid fa-circle-check text-3xl mb-2"></i>
+                    <p>Your table has been reserved successfully! We'll send you a confirmation shortly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Ambiance Section -->
+    <section id="about" class="py-16 md:py-24 bg-ivory">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="fade-up">
+                    <h2 class="text-5xl md:text-6xl font-playfair font-bold text-terracotta mb-6">Our Story & Ambiance</h2>
+                    <p class="text-slate text-lg leading-relaxed mb-6">
+                        At Shanti Deep, we bring you the authentic taste of North India, with recipes passed down through three generations. We use only the freshest, locally sourced ingredients to prepare every dish, ensuring rich flavors and uncompromised quality.
+                    </p>
+                    <p class="text-slate text-lg leading-relaxed mb-6">
+                        Our warm, inviting ambiance is perfect for family dinners, group outings, or a quiet meal with friends. Whether you're a local resident or a traveler passing through Alipur Gijhauri, we welcome you with open arms and the promise of a memorable dining experience.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-saffron/20 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-heart text-3xl text-terracotta"></i>
+                        </div>
+                        <p class="text-slate font-medium text-lg">Made with love, served with pride</p>
+                    </div>
+                </div>
+                <div class="fade-up">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chef preparing North Indian dish at Shanti Deep Restaurant" class="rounded-2xl shadow-xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section id="reviews" class="py-16 md:py-24 bg-saffron/10">
+        <div class="container mx-auto px-6 md:px-12">
+            <h2 class="text-5xl md:text-6xl font-playfair font-bold text-terracotta text-center mb-4 fade-up">What Our Guests Say</h2>
+            <p class="text-slate text-lg text-center mb-12 fade-up">Rated 4.8/5 based on 90+ reviews</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-8 hover:shadow-lg transition">
+                    <div class="text-saffron text-2xl mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate italic mb-6">"The best North Indian food I've had in the area! The Kadhai Paneer is to die for, and the staff is so friendly. Will definitely come back with my family."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Rahul Sharma" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-slate">Rahul Sharma</p>
+                            <p class="text-slate/80 text-sm">Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-8 hover:shadow-lg transition" style="transition-delay: 100ms;">
+                    <div class="text-saffron text-2xl mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate italic mb-6">"Amazing ambiance and even better food! The tandoori breads are so fresh, and the masala chai is the perfect end to the meal. Highly recommend for family dinners."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Priya Singh" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-slate">Priya Singh</p>
+                            <p class="text-slate/80 text-sm">Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="fade-up bg-ivory rounded-xl shadow-md p-8 hover:shadow-lg transition" style="transition-delay: 200ms;">
+                    <div class="text-saffron text-2xl mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-slate italic mb-6">"Stopped here while traveling through Meerut Road, and it was the best decision! The shahi paneer was creamy and delicious, and the service was quick. Will be back!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Amit Verma" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-slate">Amit Verma</p>
+                            <p class="text-slate/80 text-sm">Traveler</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Footer -->
+    <footer id="contact" class="bg-slate text-ivory py-16 md:py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-playfair font-bold text-saffron mb-6">Address</h3>
+                    <p class="text-ivory/80 text-lg leading-relaxed">
+                        Shanti Deep Restaurant<br>
+                        Meerut Road, Alipur Gijhauri<br>
+                        Uttar Pradesh 203001
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-playfair font-bold text-saffron mb-6">Opening Hours</h3>
+                    <p class="text-ivory/80 text-lg leading-relaxed">
+                        Monday to Sunday<br>
+                        11:00 AM - 11:00 PM
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-playfair font-bold text-saffron mb-6">Contact Us</h3>
+                    <p class="text-ivory/80 text-lg leading-relaxed mb-2">
+                        <i class="fa-solid fa-phone mr-2"></i> +91 98765 43210
+                    </p>
+                    <p class="text-ivory/80 text-lg leading-relaxed">
+                        <i class="fa-solid fa-envelope mr-2"></i> info@shantideeprestaurant.com
+                    </p>
+                </div>
+            </div>
+            <!-- Embedded Map Placeholder -->
+            <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg mb-8">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.123456789!2d77.123456!3d28.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDA0JzA1LjQiTiA3N8KwMDcnMjUuNCJF!5e0!3m2!1sen!2sin!4v1234567890" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Shanti Deep Restaurant Location"
+                ></iframe>
+            </div>
+            <div class="text-center text-ivory/60 pt-8 border-t border-ivory/10">
+                <p>&copy; 2024 Shanti Deep Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Menu Tab Switching
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                menuTabs.forEach(t => {
+                    t.classList.remove('bg-terracotta', 'text-ivory');
+                    t.classList.add('bg-ivory', 'border-2', 'border-terracotta', 'text-terracotta');
+                });
+                // Add active class to clicked tab
+                tab.classList.remove('bg-ivory', 'border-2', 'border-terracotta', 'text-terracotta');
+                tab.classList.add('bg-terracotta', 'text-ivory');
+
+                // Get category
+                const category = tab.getAttribute('data-category');
+
+                // Hide all menu items
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Show menu items with matching category
+                menuItems.forEach(item => {
+                    if (item.getAttribute('data-category') === category) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Reservation Form Submit
+        const reservationForm = document.getElementById('reservation-form');
+        const bookingSuccess = document.getElementById('booking-success');
+
+        // Set min date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Hide form
+            reservationForm.classList.add('hidden');
+            // Show success message
+            bookingSuccess.classList.remove('hidden');
+            // Reset form after 5 seconds
+            setTimeout(() => {
+                reservationForm.classList.remove('hidden');
+                bookingSuccess.classList.add('hidden');
+                reservationForm.reset();
+            }, 5000);
+        });
+
+        // Scroll Animation (Fade Up)
+        const fadeUpElements = document.querySelectorAll('.fade-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeUpElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scrolling for Nav Links
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80, // Offset for sticky navbar
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
